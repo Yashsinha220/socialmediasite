@@ -1,0 +1,8 @@
+.home{
+    position: relative;
+    display: grid;
+    grid-template-columns: 18rem auto 20rem;
+    /* this grid template assign the width what we want  */
+    gap: 1rem;
+
+}
