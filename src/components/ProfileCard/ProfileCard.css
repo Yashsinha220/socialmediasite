@@ -74,3 +74,10 @@
 .vl {
     height: 150%;
 }
+.ProfileCard > span {
+  font-weight: bold;
+  align-self: center;
+  color: orange;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
