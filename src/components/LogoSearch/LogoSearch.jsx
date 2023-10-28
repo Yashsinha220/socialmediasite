@@ -1,7 +1,7 @@
 import React from "react";
 import { UilSearch } from "@iconscout/react-unicons";
 import "./LogoSearch.css";
-import Logo from "../../img/Logo.png";
+import Logo from "../../img/logo.png";
 
 const LogoSearch = () => {
   return (
