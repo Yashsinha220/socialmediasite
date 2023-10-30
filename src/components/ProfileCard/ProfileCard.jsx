@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileCard.css";
 import Cover from "../../img/cover.jpg";
 import Profile from "../../img/profileImg.jpg";
 const ProfileCard = () => {
+  const [ProfilePage, setProfilePage] = useState(true);
   return (
     <div className="ProfileCard">
       <div className="ProfileImage">
@@ -30,9 +31,7 @@ const ProfileCard = () => {
         <hr />
       </div>
 
-      <span>
-        My Profile
-      </span>
+      {ProfilePage ? " " : <span>My Profile</span>}
     </div>
   );
 };
