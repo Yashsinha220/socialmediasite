@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Auth.css";
 import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-// import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { login, SignUp} from "../../actions/Authaction";
+import authReducer from "../../reducers/authReducers";
 
 const Auth = () => {
   const [isSignnUp, setIsSignUp] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -37,12 +37,15 @@ const Auth = () => {
     if (isSignnUp) {
       // toast.error("password and confirm password is not same ");
       data.password === data.confirmpass
-        ? dispatch(signUp(data))
+        ? dispatch(SignUp(data))
         : toast.error("password and confirm password is not same ");
     } else {
-      dispatch(logIn(data));
+      dispatch(login(data));
     }
   };
+  
+  const mystate = useSelector(state => state.authReducer)
+  // console.log("my state are" , mystate)
   return (
     <div className="Auth">
       <div className="a-right">

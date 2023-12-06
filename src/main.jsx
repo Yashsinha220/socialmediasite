@@ -8,6 +8,9 @@ import Home from "./Pages/Home/Home.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import Auth from "./Pages/Auth/Auth.jsx";
 import PasswordReset from "./Pages/PasswordReset/PasswordReset.jsx";
+import { Provider } from "react-redux";
+import store from "./store/reduxstore.js";
+import "react-toastify/dist/ReactToastify.css";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,13 +30,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/resetpassword",
-    element:<PasswordReset/>
-  }
+    element: <PasswordReset />,
+  },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <MantineProvider>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </MantineProvider>
   </React.StrictMode>
 );
