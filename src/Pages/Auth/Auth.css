@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
 
 }
 
@@ -50,5 +50,5 @@
     justify-content: center;
 }
 .login {
-    width: 25%;
+    width: fit-content;
 }
