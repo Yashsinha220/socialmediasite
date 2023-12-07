@@ -1,5 +1,4 @@
 import * as AuthApi from "../api/AuthRequest";
-import { toast } from "react-toastify";
 
 export const login = (formdata) => async (dispatch) => {
   dispatch({ type: "AUTH_START" });
@@ -7,8 +6,7 @@ export const login = (formdata) => async (dispatch) => {
     const { data } = await AuthApi.logIn(formdata);
     dispatch({ type: "AUTH_LOGIN", data: data });
   } catch (error) {
-    dispatch({ type: "AUTH_FAIL" });
-    toast.error(error.message);
+    dispatch({ type: "AUTH_FAIL", data: error.response.data });
   }
 };
 
@@ -18,6 +16,6 @@ export const SignUp = (formdata) => async (dispatch) => {
     const { data } = await AuthApi.signUp(formdata);
     dispatch({ type: "AUTH_SIGNIN" });
   } catch (error) {
-    dispatch({ type: "AUTH_FAIL" });
+    dispatch({ type: "AUTH_FAIL", data: error.response.data });
   }
 };
