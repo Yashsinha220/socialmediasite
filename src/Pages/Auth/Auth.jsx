@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Auth.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { login, SignUp} from "../../actions/Authaction";
+import { login, SignUp } from "../../actions/Authaction";
 import authReducer from "../../reducers/authReducers";
 
 const Auth = () => {
   const [isSignnUp, setIsSignUp] = useState(false);
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.authReducer.loading)
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -43,8 +44,7 @@ const Auth = () => {
       dispatch(login(data));
     }
   };
-  
-  const mystate = useSelector(state => state.authReducer)
+
   // console.log("my state are" , mystate)
   return (
     <div className="Auth">
@@ -121,7 +121,8 @@ const Auth = () => {
             </span>
           </div>
           <button className="button infoButton" type="submit">
-            {isSignnUp ? "Sign up" : "Login"}
+            {/* {isSignnUp ? "Sign up" : "Login"} */}
+            {loading ? "loading" : isSignnUp ? "Sign Up" :"Login"}
           </button>
         </form>
       </div>
