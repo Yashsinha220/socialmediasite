@@ -1,3 +1,6 @@
+import { toast } from "react-toastify";
+import { AUTH_LOGIN, AUTH_FAIL, AUTH_SIGNIN, AUTH_START } from "./authtypes";
+
 const initalstate = {
   authData: null,
   loading: false,
@@ -9,9 +12,9 @@ const authReducer = (
   action
 ) => {
   switch (action.type) {
-    case "AUTH_START":
+    case AUTH_START:
       return { ...state, loading: true, error: false };
-    case "AUTH_LOGIN":
+    case AUTH_LOGIN:
       localStorage.setItem("user", JSON.stringify({ ...action?.data }));
       return {
         ...state,
@@ -19,9 +22,10 @@ const authReducer = (
         loading: false,
         error: false,
       };
-    case "AUTH_SIGNIN":
+    case AUTH_SIGNIN:
       return { ...state, loading: false, error: fasle };
-    case "AUTH_FAIL":
+    case AUTH_FAIL:
+      toast.error(action.data.msg);
       return { ...state, loading: false, error: true };
     default:
       return state;
